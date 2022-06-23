@@ -1,2 +1,24 @@
+<label>Server name :- </label>
+<!-- Passing and Using Data with Event Binding -->
+<!-- <input
+  type="text"
+  class="form-control"
+  (input) = "onUpdate($event)"> -->
+
+<!-- Two way binding -->
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)] = "serverName">
+
+<!-- <p>{{serverName}}</p> -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowServer"
+  (click)="onCreate()">App server</button><!-- property binding  And event binding-->
+
+<!-- <p>{{serverCreate}}</p>       String Interpoliation -->
+<p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
+<ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
 <app-server></app-server>
 <app-server></app-server>

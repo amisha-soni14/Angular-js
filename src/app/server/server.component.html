@@ -1,1 +1,6 @@
-<p>The Server Component</p>
+<!-- Dynamic style from ngStyle -->
+<p
+  [ngStyle] = "{ backgroundColor : getColor() }"
+  [ngClass] = "{offline : serverStatus === 'offline'} "> <!-- Dynamic ngClass -->
+    This is server id {{ serverId}} and server status {{ getServerStatus() }}
+  </p>
