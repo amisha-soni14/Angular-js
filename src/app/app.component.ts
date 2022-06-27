@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
+// ViewEncapsulation
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

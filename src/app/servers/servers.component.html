@@ -22,9 +22,18 @@
   class="btn btn-danger"
   (click)=" OnDestroyMethod();">Delete server status
 </button>
+
+
 <!-- <p>{{serverCreate}}</p>       String Interpoliation -->
 <p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
 <p> Hello</p>
 <ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
+
+
+
+<p>
+  Hello I want to use for host listener
+</p>
+
 <app-server></app-server>
 <app-server></app-server>

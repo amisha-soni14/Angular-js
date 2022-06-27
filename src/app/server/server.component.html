@@ -1,6 +1,6 @@
 <!-- Dynamic style from ngStyle -->
 <p
   [ngStyle] = "{ backgroundColor : getColor() }"
-  [ngClass] = "{offline : serverStatus === 'offline'} "> <!-- Dynamic ngClass -->
+  [ngClass] = "{offline : serverStatus === 'offline'} "> <!-- Dynamic ngClass classname variable name === value u want to check-->
     This is server id {{ serverId}} and server status {{ getServerStatus() }}
   </p>
