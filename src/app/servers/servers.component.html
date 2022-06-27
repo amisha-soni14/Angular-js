@@ -8,17 +8,23 @@
 <!-- Two way binding -->
 <input
   type="text"
-  class="form-control"
+  class="form-control "
   [(ngModel)] = "serverName">
 
 <!-- <p>{{serverName}}</p> -->
 <button
   class="btn btn-primary"
   [disabled]="!allowServer"
-  (click)="onCreate()">App server</button><!-- property binding  And event binding-->
+  (click)="onCreate()">App server
+</button><!-- property binding  And event binding-->
 
+<button
+  class="btn btn-danger"
+  (click)=" OnDestroyMethod();">Delete server status
+</button>
 <!-- <p>{{serverCreate}}</p>       String Interpoliation -->
 <p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
+<p> Hello</p>
 <ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
 <app-server></app-server>
 <app-server></app-server>

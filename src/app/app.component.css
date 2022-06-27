@@ -1,3 +1,9 @@
 h2 {
   color: darkblue;
 }
+.row {
+  background-color: lime;
+}
+p {
+  background-color: lightblue;
+}
