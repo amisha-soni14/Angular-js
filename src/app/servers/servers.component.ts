@@ -8,8 +8,9 @@ import {
   Renderer2,
   HostListener,
   HostBinding
-}
-from '@angular/core';
+}from '@angular/core';
+import { Router } from '@angular/router';
+
 import {ViewEncapsulation} from '@angular/core';
 
 // @Directive ({
@@ -26,6 +27,18 @@ import {ViewEncapsulation} from '@angular/core';
 })
 
 export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
+  servers = [
+    {
+      id: 1,
+      name: "Amisha"
+    },
+    {
+      id: 2,
+      name: "Tanisha"
+    },
+  ];
+
+
   allowServer = false;
   serverCreate = "No server created!!";
   serverName : string = "TestServer";
@@ -33,7 +46,7 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
   // HostBinding ('propertyname.subproperty')
   @HostBinding('style.backgroundColor')backgroundColor : string = "transparent";
 
-  constructor(private elRef: ElementRef, private renderer:Renderer2) {
+  constructor(private elRef: ElementRef, private renderer:Renderer2, private router: Router) {
     setTimeout(() => {
       this.allowServer = true;
     }, 2000);
@@ -60,6 +73,10 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
   onUpdate(event : Event) {
     this.serverName = (<HTMLInputElement>event.target).value
   }
+
+  onLoad() {
+    this.router.navigate(['/server']);
+  } //Navigating programatically
 
   OnDestroyMethod() {
     console.log("OnDestory is callled")

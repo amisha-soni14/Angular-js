@@ -1,4 +1,6 @@
 <!-- Dynamic style from ngStyle -->
+<h2>User id : {{server.id}}</h2>
+<h2>User name : {{server.name}}</h2>
 <p
   [ngStyle] = "{ backgroundColor : getColor() }"
   [ngClass] = "{offline : serverStatus === 'offline'} "> <!-- Dynamic ngClass classname variable name === value u want to check-->

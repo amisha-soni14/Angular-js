@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
@@ -10,12 +14,26 @@ import { LoginService } from '../login.service';
   `],
   providers: [LoginService] //services Injectors
 })
-export class ServerComponent {
+export class ServerComponent implements OnInit {
+
+
   serverId:number = 10 ;
   serverStatus:string = 'offline';
-  constructor(private loginservice : LoginService) {
+  constructor(private route: ActivatedRoute, private loginservice : LoginService, ) {
     this.serverStatus = Math.random() > 0.5 ? "online" :"offline";
     this.loginservice.logStatusChange(this.serverStatus);//sevices
+  }
+  server!: {
+    id: number,
+    name: string
+  };
+
+  ngOnInit() {
+    debugger
+    this.server = {
+      id: this.route.snapshot.params['id'],
+      name: this.route.snapshot.params['name']
+    };
   }
 
   getServerStatus() {
