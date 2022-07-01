@@ -35,7 +35,7 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
     {
       id: 2,
       name: "Tanisha"
-    },
+    }
   ];
 
 
@@ -74,9 +74,9 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
     this.serverName = (<HTMLInputElement>event.target).value
   }
 
-  onLoad() {
-    this.router.navigate(['/server']);
-  } //Navigating programatically
+  // onLoad() {
+  //   this.router.navigate(['/server']);
+  // } //Navigating programatically
 
   OnDestroyMethod() {
     console.log("OnDestory is callled")

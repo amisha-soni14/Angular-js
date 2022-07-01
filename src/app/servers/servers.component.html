@@ -1,3 +1,8 @@
+<!-- <button class="btn btn-primary" (click) ="onLoad();">Go to server</button> -->
+
+<router-outlet></router-outlet>
+
+
 <label>Server name :- </label>
 <!-- Passing and Using Data with Event Binding -->
 <!-- <input
@@ -12,11 +17,13 @@
   [(ngModel)] = "serverName">
 
 <!-- <p>{{serverName}}</p> -->
+<br>
 <button
   class="btn btn-primary"
   [disabled]="!allowServer"
   (click)="onCreate()">App server
 </button><!-- property binding  And event binding-->
+<br>
 
 <button
   class="btn btn-danger"
@@ -37,7 +44,25 @@
 
 
 <br>
-<button class="btn btn-primary" (click) ="onLoad();">Go to server</button>
 
-<!-- <app-server></app-server>
-<app-server></app-server> -->
+
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+
+    <div class="btn btn-group">
+      <a
+        [routerLink]="['/servers', server.id, server.name]"
+        href="#"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+

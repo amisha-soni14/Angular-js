@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
 // ViewEncapsulation
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,13 @@ import {ViewEncapsulation} from '@angular/core';
 })
 export class AppComponent {
   title = 'demo-project';
+
+  constructor(private router: Router){
+
+  }
+  onLoad() {
+      this.router.navigate(['/servers']);
+  }
+
 }
 

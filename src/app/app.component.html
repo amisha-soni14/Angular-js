@@ -6,10 +6,12 @@
       <hr>
     </div>
   </div>
-  <div class="btn-group" role="group">
+  <!-- <div class="btn-group" role="group">
     <button type="button" class="btn btn-primary" [routerLink]="'/servers'" routerLinkActive="active">Servers Component</button>
     <button type="button" class="btn btn-primary" [routerLink]="'/server'" routerLinkActive="active">Server Component</button>
-  </div>
+  </div> -->
   <p>Hello app component </p>
+  <button class="btn btn-primary" (click) ="onLoad();">Go to servers</button>
+  <br><br>
   <router-outlet></router-outlet>
 </div>

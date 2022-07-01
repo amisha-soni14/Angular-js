@@ -14,8 +14,13 @@ import { ActivatedRoute } from '@angular/router';
   `],
   providers: [LoginService] //services Injectors
 })
+
 export class ServerComponent implements OnInit {
 
+  server!: {
+    id: number,
+    name: string
+  };
 
   serverId:number = 10 ;
   serverStatus:string = 'offline';
@@ -23,13 +28,8 @@ export class ServerComponent implements OnInit {
     this.serverStatus = Math.random() > 0.5 ? "online" :"offline";
     this.loginservice.logStatusChange(this.serverStatus);//sevices
   }
-  server!: {
-    id: number,
-    name: string
-  };
 
   ngOnInit() {
-    debugger
     this.server = {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name']
