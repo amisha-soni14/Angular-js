@@ -9,10 +9,12 @@ import { EditServerComponent } from './server/edit-server/edit-server.component'
 
 const routes: Routes = [
   { path: "app", component: AppComponent },
-  { path: "servers", component: ServersComponent },
-  { path: "servers/:id/:name", component: ServerComponent },
+  { path: "servers", component: ServersComponent , children: [
+    { path: ":id/:name", component: ServerComponent },
+    { path: ":id/edit", component: ServerComponent }
+  ]},
+  // nested child routes
   { path: "server", component: ServerComponent },
-  { path: "servers/:id/edit", component: ServerComponent },
   { path: "**", component: ServersComponent },
 ];
 

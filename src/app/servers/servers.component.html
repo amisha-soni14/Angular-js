@@ -1,85 +1,87 @@
-<button class="btn btn-primary" (click) ="onLoad(1);">Go to server</button>
 
-<br><hr>
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 
+<div>
+  <button class="btn btn-primary" (click) ="onLoad(1);">Go to server</button>
 
-<label>Server name :- </label>
-<!-- Passing and Using Data with Event Binding -->
-<!-- <input
-  type="text"
-  class="form-control"
-  (input) = "onUpdate($event)"> -->
+  <br><hr>
 
-<!-- Two way binding -->
-<input
-  type="text"
-  class="form-control "
-  [(ngModel)] = "serverName">
+  <label>Server name :- </label>
+  <!-- Passing and Using Data with Event Binding -->
+  <!-- <input
+    type="text"
+    class="form-control"
+    (input) = "onUpdate($event)"> -->
 
-<!-- <p>{{serverName}}</p> -->
-<br>
-<button
-  class="btn btn-primary"
-  [disabled]="!allowServer"
-  (click)="onCreate()">App server
-</button><!-- property binding  And event binding-->
-<br>
+  <!-- Two way binding -->
+  <input
+    type="text"
+    class="form-control "
+    [(ngModel)] = "serverName">
 
-<button
-  class="btn btn-danger"
-  (click)=" OnDestroyMethod();">Delete server status
-</button>
+  <!-- <p>{{serverName}}</p> -->
+  <br>
+  <button
+    class="btn btn-primary"
+    [disabled]="!allowServer"
+    (click)="onCreate()">App server
+  </button><!-- property binding  And event binding-->
+  <br>
 
-
-<!-- <p>{{serverCreate}}</p>       String Interpoliation -->
-<p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
-<p> Hello</p>
-<ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
+  <button
+    class="btn btn-danger"
+    (click)=" OnDestroyMethod();">Delete server status
+  </button>
 
 
-
-<p>
-  Hello this is servers compnent.
-</p>
-
-
-<br>
+  <!-- <p>{{serverCreate}}</p>       String Interpoliation -->
+  <p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
+  <p> Hello</p>
+  <ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
 
 
-<div class="row">
-  <div class="col-xs-12 col-sm-4">
-    <hr>
-    <h3>Passing and fetching params</h3>
-    <!-- Passing and fetching params -->
-    <div class="btn btn-group">
-      <a
-        [routerLink]="['/servers',server.id,server.name]"
-        href="#"
-        class="list-group-item"
-        *ngFor="let server of servers">
-        {{ server.name }}<br>
-      </a>
+
+  <p>
+    Hello this is servers compnent.
+  </p>
+
+
+  <br>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <hr>
+      <h3>Passing and fetching params</h3>
+      <!-- Passing and fetching params -->
+      <div class="btn btn-group">
+        <a
+          [routerLink]="['/servers',server.id,server.name]"
+          href="#"
+          class="list-group-item"
+          *ngFor="let server of servers">
+          {{ server.name }}<br>
+        </a>
+      </div>
+      <hr>
+      <!-- Passing and fetching Fragmentation and Query params -->
+      <h3>Fragmentation and Query params</h3>
+      <div class="btn btn-group">
+        <a
+          [routerLink]="['/servers', 5, 'edit']"
+          [queryParams]= "{allowEdit : '1'}"
+          fragment="loading"
+          href="#"
+          class="list-group-item"
+          *ngFor="let server of servers">
+          {{server.name}}<br>
+        </a>
+      </div>
+
+
     </div>
-    <hr>
-    <!-- Passing and fetching Fragmentation and Query params -->
-    <h3>Fragmentation and Query params</h3>
-    <div class="btn btn-group">
-      <a
-        [routerLink]="['/servers', 5, 'edit']"
-        [queryParams]= "{allowEdit : '1'}"
-        fragment="loading"
-        href="#"
-        class="list-group-item"
-        *ngFor="let server of servers">
-        {{server.name}}<br>
-      </a>
-    </div>
-
-
   </div>
+
 </div>
-
-
 
 
