@@ -1,6 +1,7 @@
-<!-- <button class="btn btn-primary" (click) ="onLoad();">Go to server</button> -->
+<button class="btn btn-primary" (click) ="onLoad(1);">Go to server</button>
 
-<router-outlet></router-outlet>
+<br><hr>
+<!-- <router-outlet></router-outlet> -->
 
 
 <label>Server name :- </label>
@@ -48,14 +49,30 @@
 
 <div class="row">
   <div class="col-xs-12 col-sm-4">
-
+    <hr>
+    <h3>Passing and fetching params</h3>
+    <!-- Passing and fetching params -->
     <div class="btn btn-group">
       <a
-        [routerLink]="['/servers', server.id, server.name]"
+        [routerLink]="['/servers',server.id,server.name]"
         href="#"
         class="list-group-item"
         *ngFor="let server of servers">
-        {{ server.name }}
+        {{ server.name }}<br>
+      </a>
+    </div>
+    <hr>
+    <!-- Passing and fetching Fragmentation and Query params -->
+    <h3>Fragmentation and Query params</h3>
+    <div class="btn btn-group">
+      <a
+        [routerLink]="['/servers', 5, 'edit']"
+        [queryParams]= "{allowEdit : '1'}"
+        fragment="loading"
+        href="#"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{server.name}}<br>
       </a>
     </div>
 

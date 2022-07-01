@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ServersComponent } from './servers/servers.component';
 import { ServerComponent } from './server/server.component';
+import { EditServerComponent } from './server/edit-server/edit-server.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: "servers", component: ServersComponent },
   { path: "servers/:id/:name", component: ServerComponent },
   { path: "server", component: ServerComponent },
+  { path: "servers/:id/edit", component: ServerComponent },
   { path: "**", component: ServersComponent },
 ];
 

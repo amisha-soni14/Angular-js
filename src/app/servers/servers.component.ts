@@ -74,9 +74,9 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
     this.serverName = (<HTMLInputElement>event.target).value
   }
 
-  // onLoad() {
-  //   this.router.navigate(['/server']);
-  // } //Navigating programatically
+  onLoad(id: number) {
+    this.router.navigate(['/server', id, 'edit'],{queryParams: {allowEdit:'1'},fragment:'loading'});
+  } //Navigating programatically
 
   OnDestroyMethod() {
     console.log("OnDestory is callled")

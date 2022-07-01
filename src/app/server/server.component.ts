@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -30,10 +30,19 @@ export class ServerComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.route.snapshot.queryParams);
+    console.log(this.route.snapshot.fragment);//fetch a queryParams & fragment
     this.server = {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name']
     };
+    this.route.params
+      .subscribe (
+        (params: Params) => {
+          this.server.id = params['id'];
+          this.server.name = params['name'];
+        }//dynamic params
+      );
   }
 
   getServerStatus() {

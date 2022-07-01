@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { AppRoutingModule } from './app-routing.module';
+import { EditServerComponent } from './server/edit-server/edit-server.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerComponent,
-    ServersComponent
+    ServersComponent,
+    EditServerComponent
   ],
   imports: [
     BrowserModule,
