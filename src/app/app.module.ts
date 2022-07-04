@@ -8,6 +8,7 @@ import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EditServerComponent } from './server/edit-server/edit-server.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditServerComponent } from './server/edit-server/edit-server.component'
     AppComponent,
     ServerComponent,
     ServersComponent,
-    EditServerComponent
+    EditServerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

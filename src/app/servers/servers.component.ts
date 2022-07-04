@@ -8,7 +8,10 @@ import {
   Renderer2,
   HostListener,
   HostBinding
-}from '@angular/core';
+}from '@angular/core'
+import { ActivatedRoute, Params } from '@angular/router';
+;
+// import { interval, Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import {ViewEncapsulation} from '@angular/core';
@@ -46,7 +49,9 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
   // HostBinding ('propertyname.subproperty')
   @HostBinding('style.backgroundColor')backgroundColor : string = "transparent";
 
-  constructor(private elRef: ElementRef, private renderer:Renderer2, private router: Router) {
+
+
+  constructor(private elRef: ElementRef, private renderer:Renderer2, private router: Router, private route: ActivatedRoute) {
     setTimeout(() => {
       this.allowServer = true;
     }, 2000);
@@ -55,10 +60,12 @@ export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
   // lifecycle hooks(OnInit, OnDestroy, onAfterViewInit)
   ngOnInit() {
     console.log("ngOnInit is called")
+
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log("ngOnDestroy is called")
+    // this.firstObsSubscription.unsubscribe();//unsubscribe obervables
   }
 
   ngAfterViewInit() {

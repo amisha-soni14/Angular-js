@@ -43,6 +43,10 @@ export class ServerComponent implements OnInit {
           this.server.name = params['name'];
         }//dynamic params
       );
+    this.route.params.subscribe((params: Params) =>
+    {
+      this.server.id = +params['id'];
+    });
   }
 
   getServerStatus() {
