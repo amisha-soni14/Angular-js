@@ -1,103 +1,27 @@
-import {
-  Directive,
-  Component,
-  OnInit,
-  OnDestroy,
-  AfterViewInit,
-  ElementRef,
-  Renderer2,
-  HostListener,
-  HostBinding
-}from '@angular/core'
-import { ActivatedRoute, Params } from '@angular/router';
-;
-// import { interval, Subscription, Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ServersService } from './servers.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import {ViewEncapsulation} from '@angular/core';
-
-// @Directive ({
-//   selector: "[bgColor]"
-// })
-
-@Component ({
-  // selector: '[app-servers]',
-  // selector: '.app-servers',
+@Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css'],
-  encapsulation : ViewEncapsulation.ShadowDom
+  styleUrls: ['./servers.component.css']
 })
+export class ServersComponent implements OnInit {
 
-export class ServersComponent implements OnInit , OnDestroy, AfterViewInit {
-  servers = [
-    {
-      id: 1,
-      name: "Amisha"
-    },
-    {
-      id: 2,
-      name: "Tanisha"
-    }
-  ];
+  servers: {id: number, name: string, status: string}[] = [];
 
-
-  allowServer = false;
-  serverCreate = "No server created!!";
-  serverName : string = "TestServer";
-  serverStatus = false;
-  // HostBinding ('propertyname.subproperty')
-  @HostBinding('style.backgroundColor')backgroundColor : string = "transparent";
-
-
-
-  constructor(private elRef: ElementRef, private renderer:Renderer2, private router: Router, private route: ActivatedRoute) {
-    setTimeout(() => {
-      this.allowServer = true;
-    }, 2000);
+  constructor(private serversService: ServersService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
-  // lifecycle hooks(OnInit, OnDestroy, onAfterViewInit)
   ngOnInit() {
-    console.log("ngOnInit is called")
-
+    this.servers = this.serversService.getServers();
   }
 
-  ngOnDestroy(): void {
-    console.log("ngOnDestroy is called")
-    // this.firstObsSubscription.unsubscribe();//unsubscribe obervables
+  onReload() {
+    this.router.navigate(['servers'], {relativeTo: this.route});
   }
 
-  ngAfterViewInit() {
-    console.log("ngAfterViewInit is callled")
-  }
-
-  onCreate() {
-    this.serverStatus = true;
-    this.serverCreate = ("Server was created!! Name of server is " + this.serverName);
-  }
-
-  onUpdate(event : Event) {
-    this.serverName = (<HTMLInputElement>event.target).value
-  }
-
-  onLoad(id: number) {
-    this.router.navigate(['/server', id, 'edit'],{queryParams: {allowEdit:'1'},fragment:'loading'});
-  } //Navigating programatically
-
-  OnDestroyMethod() {
-    console.log("OnDestory is callled")
-    console.log( this.serverName.slice(0));
-  }
-
-  // HostListener and HostBinding
-  @HostListener('mouseenter')mouseover(eventData: Event) {
-    // this.renderer.setStyle(this.elRef.nativeElement, "background-color","lightpink");
-    this.backgroundColor = "lightpink";
-  }
-
-  @HostListener('mouseleave')mouseleave(eventData: Event) {
-    // this.renderer.setStyle(this.elRef.nativeElement, "background-color","transparent");
-    this.backgroundColor = "transparent";
-  }
 }

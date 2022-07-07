@@ -1,87 +1,23 @@
-
-<!-- <router-outlet></router-outlet> -->
-
-<div>
-  <button class="btn btn-primary" (click) ="onLoad(1);">Go to server</button>
-
-  <br><hr>
-
-  <label>Server name :- </label>
-  <!-- Passing and Using Data with Event Binding -->
-  <!-- <input
-    type="text"
-    class="form-control"
-    (input) = "onUpdate($event)"> -->
-
-  <!-- Two way binding -->
-  <input
-    type="text"
-    class="form-control "
-    [(ngModel)] = "serverName">
-
-  <!-- <p>{{serverName}}</p> -->
-  <br>
-  <button
-    class="btn btn-primary"
-    [disabled]="!allowServer"
-    (click)="onCreate()">App server
-  </button><!-- property binding  And event binding-->
-  <br>
-
-  <button
-    class="btn btn-danger"
-    (click)=" OnDestroyMethod();">Delete server status
-  </button>
-
-
-  <!-- <p>{{serverCreate}}</p>       String Interpoliation -->
-  <p *ngIf = "serverStatus else noServer">Server was created!! Name of server is " + {{serverName}}</p>
-  <p> Hello</p>
-  <ng-template #noServer>No Server was created!! </ng-template><!-- ng if-else -->
-
-
-
-  <p>
-    Hello this is servers compnent.
-  </p>
-
-
-  <br>
-
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <hr>
-      <h3>Passing and fetching params</h3>
-      <!-- Passing and fetching params -->
-      <div class="btn btn-group">
-        <a
-          [routerLink]="['/servers',server.id,server.name]"
-          href="#"
-          class="list-group-item"
-          *ngFor="let server of servers">
-          {{ server.name }}<br>
-        </a>
-      </div>
-      <hr>
-      <!-- Passing and fetching Fragmentation and Query params -->
-      <h3>Fragmentation and Query params</h3>
-      <div class="btn btn-group">
-        <a
-          [routerLink]="['/servers', 5, 'edit']"
-          [queryParams]= "{allowEdit : '1'}"
-          fragment="loading"
-          href="#"
-          class="list-group-item"
-          *ngFor="let server of servers">
-          {{server.name}}<br>
-        </a>
-      </div>
-
-
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <div class="list-group">
+      <a
+        [routerLink]="['/servers', server.id]"
+        [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
+        fragment="loading"
+        href="#"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>
     </div>
   </div>
-
+  <div class="col-xs-12 col-sm-4">
+    <router-outlet></router-outlet>
+    <!--<button class="btn btn-primary" (click)="onReload()">Reload Page</button>-->
+    <!--<app-edit-server></app-edit-server>-->
+    <!--<hr>-->
+    <!--&lt;!&ndash;<app-server></app-server>&ndash;&gt;-->
+  </div>
 </div>
-
 

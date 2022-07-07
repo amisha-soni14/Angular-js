@@ -1,17 +1,26 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>I'm in the component</h2>
-      <hr>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <!-- <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary" [routerLink]="'/servers'" routerLinkActive="active">Servers Component</button>
-    <button type="button" class="btn btn-primary" [routerLink]="'/server'" routerLinkActive="active">Server Component</button>
-  </div> -->
-  <p>Hello app component </p>
-  <button class="btn btn-primary" (click) ="onLoad();">Go to servers</button>
-  <br><br>
-  <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
