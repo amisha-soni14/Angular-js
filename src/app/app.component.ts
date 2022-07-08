@@ -1,11 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-
+import {
+ Component,
+ OnInit,
+ ViewContainerRef,
+ ComponentFactoryResolver,
+ ViewChild,
+ ElementRef
+} from '@angular/core';
+import { DynamicComponent } from './dynamic/dynamic.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('stable');
@@ -53,4 +65,18 @@ export class AppComponent {
       started: new Date(15, 1, 2017)
     });
   }
+
+  createDynamic() {
+    // create the component factory
+    const dynamicComponentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);
+
+    // add the component to the view
+    const componentRef = this.container.createComponent(dynamicComponentFactory);
+  }
 }
+
+
+
+
+
+

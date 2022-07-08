@@ -1,3 +1,9 @@
 .container {
   margin-top: 50px;
 }
+span {
+  color: black;
+  font-weight: bold;
+  background-color: whitesmoke;
+  margin-right: 10px;
+}
